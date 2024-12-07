@@ -14,14 +14,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-RUN pip install --no-cache-dir \
-    flask \
-    tensorflow-cpu \
-    numpy \
-    google-cloud-storage \
-    firebase-admin \
-    google-cloud-pubsub \
-    protobuf
+RUN pip install requirements.txt
 
 
 # Expose the port your Flask app runs on
