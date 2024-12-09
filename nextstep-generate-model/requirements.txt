@@ -1,0 +1,6 @@
+flask
+google-cloud-pubsub
+google-cloud-storage
+tensorflow-cpu
+scikit-learn
+protobuf

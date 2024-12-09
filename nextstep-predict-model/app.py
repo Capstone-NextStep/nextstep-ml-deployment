@@ -11,7 +11,7 @@ from flask import Flask, request, jsonify
 from google.cloud import pubsub_v1, storage
 from firebase_admin import firestore
 
-# Initialize Firebase Admin at the top of your file
+# Initialize Firebase Admin at the top of the file
 firebase_admin.initialize_app()
 
 # Enhanced logging configuration
@@ -36,11 +36,11 @@ def download_from_gcs(bucket_name: str, source_blob_name: str, destination_file_
     logger.info(f"Downloaded {source_blob_name} to {destination_file_name}")
 
 # Download required files
-download_from_gcs('deploy-ml-1', 'model_nextStep.h5', 'model_nextStep.h5')
-download_from_gcs('deploy-ml-1', 'tokenizer_and_labels.json', 'tokenizer_and_labels.json')
+download_from_gcs('nextstep-model-predict', 'model_nextStep.h5', 'model.h5')
+download_from_gcs('nextstep-model-predict', 'tokenizer_and_labels.json', 'tokenizer_and_labels.json')
 
 # Load the model
-model = tf.keras.models.load_model('model_nextStep.h5')
+model = tf.keras.models.load_model('model.h5')
 
 # Load tokenizer and job labels from JSON
 with open('tokenizer_and_labels.json', 'r') as f:
@@ -59,7 +59,7 @@ index_to_job_title = {index: title for title, index in y_titles.items()}
 class MLPredictionService:
     def __init__(self):
         self.publisher = pubsub_v1.PublisherClient()
-        self.project_id = 'test-1-7ccf2'
+        self.project_id = 'next-step-442801'
         self.topic_name = 'ml-prediction-result'
         self.topic_path = self.publisher.topic_path(self.project_id, self.topic_name)
         self.db = firestore.client()

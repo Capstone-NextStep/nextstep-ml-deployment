@@ -1,0 +1,7 @@
+flask
+tensorflow-cpu
+numpy
+google-cloud-storage
+firebase-admin
+google-cloud-pubsub
+protobuf

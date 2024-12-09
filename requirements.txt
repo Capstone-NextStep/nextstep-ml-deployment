@@ -1,5 +1,0 @@
-flask
-tensorflow
-numpy
-google-cloud-storage
-protobuf
