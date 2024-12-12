@@ -12,9 +12,5 @@ Flask Application
 The Flask app serves as the API for the machine learning model. Below are the key features of app.py:
 
 **Endpoints:**
-- /predict: Accepts input data (JSON) and returns predictions.
-- /generate: Generate CV
-
-## Contributors
-- Muhammad Raihan Saputra
-- Bryant Firsta Agdinto
+- /predict: Accepts input data of "skills" (JSON) and return careers predictions.
+- /generate: Generate About section for the CV Template Based on user provided career
